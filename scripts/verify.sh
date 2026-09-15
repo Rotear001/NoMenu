@@ -13,7 +13,7 @@ plutil -extract CFBundleIdentifier raw "$APP_PATH/Contents/Info.plist" | grep -q
 plutil -extract CFBundleIconFile raw "$APP_PATH/Contents/Info.plist" | grep -q '^NoMenu\.icns$'
 test -f "$APP_PATH/Contents/Resources/NoMenu.icns"
 cmp "$PROJECT_DIR/Resources/NoMenu.icns" "$APP_PATH/Contents/Resources/NoMenu.icns"
-codesign --verify --strict "$APP_PATH"
+codesign --verify --strict --test-requirement '=identifier "com.nomenu.utility"' "$APP_PATH"
 
 if rg -q 'AXUIElementSetAttributeValue|CGSSetWindow|SLSSetWindow|SkyLight' "$PROJECT_DIR/Sources"; then
     echo "Forbidden external menu-bar mutation API found in Sources." >&2

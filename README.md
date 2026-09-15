@@ -2,30 +2,24 @@
 
 **English** | [한국어](README.ko.md)
 
-NoMenu is a macOS utility for reaching menu bar items that become inaccessible when there is not enough usable menu bar space. It discovers real status items through the Accessibility API and presents confirmed overflowed items from its own menu bar panel.
+NoMenu is a macOS utility for reaching menu bar items that become inaccessible when there is not enough usable menu bar space. It discovers real status items through Accessibility and presents confirmed overflowed items in its own menu bar panel.
 
 > [!IMPORTANT]
-> NoMenu was built around the menu bar behavior of macOS releases before macOS 27. macOS 27 introduced native menu bar overflow handling and changed the behavior on which NoMenu's overflow detection depends. As a result, macOS 27 and later are unsupported, and active feature development for those releases is not currently planned.
+> NoMenu was designed for the menu bar behavior of macOS releases before macOS 27. macOS 27 introduced native menu bar overflow handling and changed the behavior on which NoMenu's detection depends. macOS 27 and later are therefore unsupported.
+
+Source-build instructions are provided below. Prebuilt DMG downloads will use GitHub Releases when available.
 
 ## Download
 
 No public DMG is currently available.
 
-> Prebuilt DMG downloads will be published through [GitHub Releases](https://github.com/Rotear001/NoMenu/releases) when available. This will be the canonical download location.
+> Future prebuilt DMG downloads will be published through [GitHub Releases](https://github.com/Rotear001/NoMenu/releases), the canonical binary download location.
 
-Before downloading a future release, note that NoMenu is intended for earlier macOS releases. macOS 27 and later are unsupported because the operating system's native menu bar overflow handling changes the behavior NoMenu relies on.
+Before downloading a future release, note that NoMenu targets macOS 15–26 and does not support macOS 27 or later. The signing and notarization status of each binary will be stated in its release notes.
 
-## Project status and compatibility
+## Project status
 
-NoMenu is a source-only project in maintenance/finalization status. There is no public prebuilt binary release.
-
-| | Support |
-| --- | --- |
-| Deployment target | macOS 15.0 |
-| macOS 15–26 | Target platform for NoMenu's original menu bar behavior |
-| macOS 27 and later | Unsupported |
-
-The deployment target comes from both `Package.swift` and `Support/Info.plist`. It is a build target, not a claim that every macOS 15–26 release and menu bar implementation has been individually validated.
+NoMenu is in maintenance/finalization status. Its original problem is largely handled by macOS 27's native overflow behavior, so active feature development for macOS 27 and later is not planned.
 
 ## Features
 
@@ -37,7 +31,19 @@ The deployment target comes from both `Package.swift` and `Support/Info.plist`. 
 - Provides ignored-item controls, a global keyboard shortcut, hover behavior, Escape-to-close, and an option to keep the panel open after activation.
 - Provides configurable panel position, width, size, spacing, background, blur, transparency, interface scale, animations, and English or Korean UI.
 - Manages Launch at Login with `SMAppService`.
-- Provides ScreenCaptureKit-based Live Artwork with configurable frame rate and app-icon fallback. Live Artwork depends on capture permission and suitable on-screen pixels, so it should be treated as an environment-dependent feature.
+- Provides ScreenCaptureKit-based Live Artwork with configurable frame rate and app-icon fallback. Live Artwork depends on capture permission and suitable on-screen pixels.
+
+## Compatibility
+
+| | Support |
+| --- | --- |
+| Deployment target | macOS 15.0 |
+| macOS 15–26 | Target platform for NoMenu's original menu bar behavior |
+| macOS 27 and later | Unsupported |
+
+The deployment target is defined in both `Package.swift` and `Support/Info.plist`. It is a build target, not a claim that every macOS 15–26 release and menu bar implementation has been individually validated.
+
+The build helper requires an installed macOS 15–26 SDK and deliberately avoids the macOS 27 SDK. It selects the newest compatible SDK in the active Xcode or Command Line Tools installation.
 
 ## Permissions
 
@@ -49,29 +55,83 @@ Accessibility permission is required to discover menu bar items, read the menu s
 
 Screen Recording permission is used for Live Artwork and for capturing desktop wallpaper pixels used by the optional panel appearance. Without it, NoMenu falls back to cached artwork or the owning application's icon where possible.
 
+## Privacy
+
 Menu bar discovery, captured artwork processing, and preferences are handled locally. NoMenu does not require an account. The current development build has no configured update-service backend.
 
 ## Building from source
 
-NoMenu is built with Swift 6 and Swift Package Manager, then packaged as an `LSUIElement` application by a shell script. Xcode Command Line Tools or Xcode with a compatible macOS SDK are required.
+NoMenu uses Swift 6 and Swift Package Manager, then packages the executable as an `LSUIElement` application. Install Xcode or Xcode Command Line Tools containing a macOS 15–26 SDK before building.
+
+1. Clone and enter the repository:
+
+   ```sh
+   git clone https://github.com/Rotear001/NoMenu.git
+   cd NoMenu
+   ```
+
+2. Create your own local signing identity as described in [Local code signing](#local-code-signing), then check it:
+
+   ```sh
+   ./scripts/check-local-signing.sh
+   ```
+
+3. Build and package the app:
+
+   ```sh
+   ./scripts/build-app.sh release
+   ```
+
+   The resulting application is `build/NoMenu.app`. The `debug` argument is also accepted; both modes are local development builds.
+
+4. Optionally run the complete build and bundle smoke check:
+
+   ```sh
+   ./scripts/verify.sh
+   ```
+
+This workflow was verified with Apple Swift 6.4, the macOS 26.5 SDK, and a contributor-owned local signing identity. It does not modify or reset macOS privacy permissions.
+
+## Local code signing
+
+NoMenu uses a stable local signing identity during development because Accessibility and other privacy-controlled APIs are associated with the application's code identity. Reusing the same locally created identity across rebuilds can reduce repeated TCC identity changes.
+
+Each developer must create and keep their **own** certificate and private key. Certificates with the same display name are still different certificates; do not download or import another developer's identity.
+
+To create the identity with Keychain Access:
+
+1. Open **Keychain Access**.
+2. Open **Certificate Assistant** and choose **Create a Certificate**.
+3. Set the name to **NoMenu Local Code Signing**.
+4. Set **Identity Type** to **Self Signed Root**.
+5. Set **Certificate Type** to **Code Signing**.
+6. Store the new identity in your login keychain.
+7. Reuse that same locally created identity for future NoMenu development builds.
+
+Verify it with either command:
 
 ```sh
-git clone https://github.com/Rotear001/NoMenu.git
-cd NoMenu
-./scripts/build-app.sh release
+./scripts/check-local-signing.sh
+security find-identity -v -p codesigning
 ```
 
-When successful, the packaging script writes `build/NoMenu.app`. The `debug` argument is also accepted; both arguments select Swift optimization settings and both remain local development builds.
+The helper only inspects valid signing identities. It does not create, import, export, or change trust for certificates and private keys. It also refuses missing or duplicate same-named identities rather than choosing ambiguously.
 
-Build verification for this snapshot did **not** complete with Apple Swift 6.4 and the macOS 27 SDK: the unchanged source reports compile-time errors in `Sources/NoMenu/Views/SettingsView.swift`. A successful clean build with another toolchain has not been verified, and the source has intentionally not been modified as part of repository publication.
+The local identity is not Apple Developer ID signing, notarization, Gatekeeper approval, public trust, or Apple verification. Never share or commit private keys, Keychain exports, `.p12` files, PEM private keys, signing passwords, or machine-local signing configuration.
 
-## Development signing
+## DMG and distribution notes
 
-Development used a local self-signed code-signing identity named **NoMenu Local Code Signing** to keep the app's macOS privacy/TCC identity stable across local rebuilds. That certificate, its private key, and the machine-local `Support/DevelopmentSigning.conf` file are not included in the repository.
+Developers can package an already-built app locally with:
 
-The packaging script intentionally stops when its pinned local identity is unavailable. A contributor cloning the repository will not have the development identity and will need to configure or adapt signing for their own local environment before producing an app bundle. Changing the signing identity may cause macOS to treat the build as a different application for privacy permissions.
+```sh
+./scripts/package-dmg.sh
+```
 
-The self-signed identity is for local development only. Any future public binary would need an appropriate distribution process, such as Developer ID signing and notarization; the local certificate must not be imported, shared, or used for public distribution.
+The script reads the real app version and produces `dist/NoMenu-<version>.dmg`, containing only `NoMenu.app` and an Applications shortcut. DMGs and app bundles are ignored by Git and must not be committed to normal repository history.
+
+A local/self-signed DMG is not Apple-notarized, Developer ID signed, Apple verified, or automatically trusted by Gatekeeper. If macOS blocks a future non-notarized release, use Apple's normal per-app approval workflow—Control-click the app and choose **Open**, or review it in **System Settings › Privacy & Security**. Do not disable Gatekeeper, SIP, or other macOS security protections.
+
+Public DMGs belong in [GitHub Releases](https://github.com/Rotear001/NoMenu/releases) as `NoMenu-<version>.dmg` assets. Creating and publishing a release is a separate distribution task; the repository's local development certificate and private key must never be included.
 
 ## Technical notes
 
@@ -87,16 +147,15 @@ The source is organized as follows:
 - `Sources/NoMenu/Models` — menu item and preference models
 - `Resources` and `Support` — application artwork and bundle metadata
 - `Tests` — focused source-level checks
-- `scripts` — packaging, verification, and repository-safety tooling
+- `scripts` — signing checks, build, packaging, verification, and repository-safety tooling
 
 ## Known limitations
 
-- macOS 27 and later are unsupported because the operating system now handles menu bar overflow differently.
+- macOS 27 and later are unsupported because the operating system handles menu bar overflow differently.
 - Discovery and interaction depend on the Accessibility roles, geometry, menus, and actions exposed by each application. Custom menu bar implementations may not be discoverable or fully interactive.
 - NoMenu deliberately withholds items whose overflow state cannot be established reliably.
-- Screen Recording permission and capturable on-screen pixels are required for Live Artwork; cached artwork or an application icon may be shown instead.
+- Screen Recording permission and capturable, composited on-screen pixels are required for Live Artwork; cached artwork or an application icon may be shown instead.
 - Public macOS APIs do not expose another application's underlying `NSStatusItem` object.
-- The current source snapshot has the build-verification limitation described above.
 
 ## Why NoMenu exists
 
