@@ -7,15 +7,35 @@ NoMenu는 메뉴 막대에 사용할 수 있는 공간이 부족해 접근할 �
 > [!IMPORTANT]
 > NoMenu는 macOS 27 이전 버전의 메뉴 막대 동작을 대상으로 설계되었습니다. macOS 27에는 시스템 자체의 메뉴 막대 오버플로 처리가 도입되어 NoMenu의 감지 기능이 의존하던 동작이 달라졌습니다. 따라서 macOS 27 이상은 지원하지 않습니다.
 
-아래에서 소스 빌드 방법을 확인할 수 있습니다. 미리 빌드된 DMG가 준비되면 GitHub Releases를 통해 배포합니다.
+아래에서 소스 빌드 방법을 확인할 수 있습니다. 현재 미리 빌드된 DMG는 GitHub Releases에서 받을 수 있습니다.
 
 ## 다운로드
 
-현재 공개된 DMG는 없습니다.
+**NoMenu 1.0 DMG를 다운로드할 수 있습니다.**
 
-> 향후 미리 빌드된 DMG는 공식 바이너리 다운로드 위치인 [GitHub Releases](https://github.com/Rotear001/NoMenu/releases)를 통해 배포합니다.
+[GitHub Releases에서 NoMenu 1.0 다운로드](https://github.com/Rotear001/NoMenu/releases/latest)
 
-향후 릴리스를 다운로드하기 전에 호환성을 확인해 주세요. NoMenu는 macOS 15–26을 대상으로 하며 macOS 27 이상은 지원하지 않습니다. 각 바이너리의 서명 및 공증 상태는 해당 릴리스 안내에 명시됩니다.
+GitHub Releases 페이지가 공식 다운로드 위치입니다. 현재 파일은 `NoMenu-1.0.dmg`이며 태그는 `v1.0`입니다.
+
+설치 방법:
+
+1. `NoMenu-1.0.dmg`를 다운로드합니다.
+2. DMG를 엽니다.
+3. NoMenu를 Applications(응용 프로그램) 폴더로 드래그합니다.
+4. 응용 프로그램 폴더에서 NoMenu를 실행합니다.
+
+> **호환성**
+>
+> NoMenu는 macOS 15–26을 대상으로 합니다.
+> macOS 27 이상은 지원하지 않습니다.
+
+이 빌드는 로컬 자체 서명 코드 서명 ID를 사용합니다. Apple Developer ID로 서명되지 않았고 공증도 받지 않았으므로 macOS의 일반적인 앱별 수동 승인 절차가 필요할 수 있습니다. Gatekeeper, SIP 또는 다른 macOS 보안 기능을 끄지 마세요.
+
+`NoMenu-1.0.dmg`의 SHA-256:
+
+```text
+3f424e29f60e802de6ad003717fb4b3652cc5ef26050d488fb4844735b408e38
+```
 
 ## 프로젝트 상태
 
@@ -70,7 +90,7 @@ NoMenu는 Swift 6 및 Swift Package Manager로 빌드한 뒤 실행 파일을 `L
    cd NoMenu
    ```
 
-2. [로컬 코드 서명](#로컬-코드-서명)의 설명에 따라 자신만의 로컬 서명 ID를 만든 뒤 확인합니다.
+2. [로컬 Self-Signed 코드 서명](#로컬-self-signed-코드-서명)의 설명에 따라 자신만의 로컬 서명 ID를 만든 뒤 확인합니다.
 
    ```sh
    ./scripts/check-local-signing.sh
@@ -92,32 +112,83 @@ NoMenu는 Swift 6 및 Swift Package Manager로 빌드한 뒤 실행 파일을 `L
 
 이 절차는 Apple Swift 6.4, macOS 26.5 SDK 및 개발자가 직접 만든 로컬 서명 ID로 검증했습니다. macOS 개인정보 보호 권한을 변경하거나 초기화하지 않습니다.
 
-## 로컬 코드 서명
+## 로컬 Self-Signed 코드 서명
 
-NoMenu는 손쉬운 사용을 비롯한 개인정보 보호 대상 API가 앱의 코드 식별 정보와 연관되기 때문에 개발 과정에서 안정적인 로컬 서명 ID를 사용합니다. 다시 빌드할 때마다 동일한 로컬 ID를 재사용하면 TCC 식별 정보가 반복해서 바뀌는 일을 줄일 수 있습니다.
+### 로컬 빌드에서 안정적인 ID를 사용하는 이유
 
-개발자마다 **자신만의** 인증서와 개인 키를 만들어 보관해야 합니다. 표시 이름이 같아도 서로 다른 인증서이므로 다른 개발자의 서명 ID를 내려받거나 가져오면 안 됩니다.
+NoMenu는 손쉬운 사용처럼 macOS의 개인정보 보호 대상 기능을 사용합니다. 로컬 개발 중에 서명되지 않은 앱을 반복해서 빌드하거나 빌드마다 다른 ID로 서명하면 macOS가 앱의 코드 ID를 서로 다르게 인식할 수 있습니다. 개발자가 직접 만든 동일한 로컬 ID를 계속 사용하면 빌드 사이의 개발용 코드 ID를 일관되게 유지하는 데 도움이 됩니다.
 
-키체인 접근에서 다음과 같이 서명 ID를 만드세요.
+이 로컬 ID는 로컬 개발 전용입니다. Apple Developer ID 서명, Apple 공증, 공개 신뢰, Apple 검증 또는 공식 배포 인증서를 대신하는 수단이 **아닙니다**.
+
+### 키체인 접근에서 자신만의 ID 만들기
+
+모든 개발자는 **자신만의** 인증서와 개인 키를 만들어야 합니다. 표시 이름이 같아도 암호학적으로는 서로 다른 ID이므로 다른 개발자의 서명 ID를 다운로드하거나 가져오지 마세요.
 
 1. **키체인 접근**을 엽니다.
-2. **인증서 지원**에서 **인증서 생성**을 선택합니다.
-3. 이름을 **NoMenu Local Code Signing**으로 지정합니다.
+2. 메뉴 막대에서 **키체인 접근 → 인증서 지원 → 인증서 생성…**을 선택합니다.
+3. **이름**을 `NoMenu Local Code Signing`으로 지정합니다.
 4. **신원 유형**을 **자체 서명 루트(Self Signed Root)**로 지정합니다.
 5. **인증서 유형**을 **코드 서명(Code Signing)**으로 지정합니다.
-6. 새 ID를 자신의 로그인 키체인에 저장합니다.
-7. 이후 NoMenu 개발 빌드에서도 자신이 만든 동일한 ID를 계속 사용합니다.
+6. ID를 생성하여 자신의 **로그인** 키체인에 저장합니다.
 
-다음 중 한 가지 명령으로 확인할 수 있습니다.
+코드 서명 ID는 인증서와 그에 연결된 개인 키로 구성됩니다. 둘 다 키체인 접근이 관리하는 로그인 키체인에 보관하며 저장소에는 넣지 않습니다.
+
+### 서명 ID 확인하기
+
+ID를 만든 직후 macOS에서 유효한 코드 서명 ID로 인식하는지 확인합니다.
 
 ```sh
-./scripts/check-local-signing.sh
 security find-identity -v -p codesigning
 ```
 
-도우미는 유효한 서명 ID가 있는지만 확인합니다. 인증서나 개인 키를 생성·가져오기·내보내기하지 않으며 신뢰 설정도 변경하지 않습니다. 같은 이름의 ID가 없거나 여러 개인 경우 임의로 선택하지 않고 중단합니다.
+출력에 `NoMenu Local Code Signing`이라는 유효한 ID가 정확히 하나 있어야 합니다. 그런 다음 저장소 루트에서 프로젝트 전용 검사를 실행합니다.
 
-이 로컬 ID는 Apple Developer ID 서명, 공증, Gatekeeper 승인, 공개 신뢰 또는 Apple 검증을 의미하지 않습니다. 개인 키, 키체인 내보내기 파일, `.p12` 파일, PEM 개인 키, 서명 암호 또는 컴퓨터별 서명 설정을 공유하거나 커밋해서는 안 됩니다.
+```sh
+./scripts/check-local-signing.sh
+```
+
+서명 확인 스크립트와 빌드 도우미에는 ID 이름이 하드코딩되어 있으며, 서명 ID를 바꾸는 환경 변수는 없습니다. 도우미는 이름이 일치하는 유효한 ID가 정확히 하나일 때만 선택합니다. ID가 없거나 같은 이름의 유효한 ID가 여러 개이면 임의로 선택하지 않고 이유를 표시한 뒤 중단합니다.
+
+### NoMenu 빌드 및 서명 확인
+
+저장소 루트에서 릴리스 구성을 빌드합니다.
+
+```sh
+./scripts/build-app.sh release
+```
+
+빌드 도우미는 컴파일 전에 서명 검사를 실행하고 일치하는 ID의 인증서 지문을 내부적으로 확인합니다. 이어서 Swift 패키지를 빌드하고 앱 번들을 만든 뒤 해당 ID로 서명하고, 인증서 기반 지정 요구 사항을 검증합니다. ID가 없거나 모호하면 컴파일 또는 기존 앱 번들 교체 전에 작업을 중단합니다.
+
+완성된 앱은 다음 위치에 생성됩니다.
+
+```text
+build/NoMenu.app
+```
+
+다음 명령으로 결과 앱의 서명을 검증하고 표시되는 서명 정보를 확인합니다.
+
+```sh
+codesign --verify --strict --test-requirement '=identifier "com.nomenu.utility"' build/NoMenu.app
+codesign -dv --verbose=2 build/NoMenu.app
+```
+
+전체 디버그 재빌드와 앱 번들 스모크 검사를 실행하려면 다음 명령을 사용합니다.
+
+```sh
+./scripts/verify.sh
+```
+
+`build-app.sh`는 `release` 또는 `debug`를 인자로 받으며 두 모드 모두 로컬 서명 개발 빌드입니다. 설치된 macOS 15–26 SDK 중 가장 최신 버전을 자동으로 선택합니다. `SDKROOT`로 특정 호환 SDK를 선택할 수 있지만 서명 ID를 설정하는 용도는 아닙니다.
+
+### 서명 ID가 없을 때
+
+키체인 접근을 열어 **로그인** 키체인에 `NoMenu Local Code Signing` 인증서와 연결된 개인 키가 모두 있는지 확인합니다. 없다면 위 절차에 따라 자신만의 ID를 만든 다음 `./scripts/check-local-signing.sh`를 다시 실행하세요. 도우미가 중복 ID를 보고하면 빌드하기 전에 키체인 접근에서 추가 ID를 제거하거나 이름을 변경하세요.
+
+도우미는 유효한 서명 ID만 검사합니다. 인증서 또는 개인 키를 생성·가져오기·내보내기하지 않으며 신뢰 설정도 변경하지 않습니다.
+
+### 로컬 서명 자료는 절대 업로드하지 않기
+
+로컬 서명 인증서 또는 ID, 개인 키, 키체인 내보내기 파일, `.p12`, `.pfx`, `.pem`, `.key` 파일, 서명 암호, `Support/DevelopmentSigning.conf` 같은 컴퓨터별 서명 설정을 공유하거나 커밋하거나 릴리스에 첨부하는 등 어떤 방식으로도 업로드하지 마세요.
 
 ## DMG 및 배포 참고 사항
 
@@ -129,9 +200,9 @@ security find-identity -v -p codesigning
 
 스크립트는 실제 앱 버전을 읽어 `dist/NoMenu-<version>.dmg`를 만들며, DMG에는 `NoMenu.app`과 Applications 바로 가기만 포함됩니다. DMG와 앱 번들은 Git에서 무시되며 일반 저장소 이력에 커밋하면 안 됩니다.
 
-로컬 자체 서명 DMG는 Apple 공증, Developer ID 서명, Apple 검증 또는 Gatekeeper의 자동 신뢰를 받은 파일이 아닙니다. 향후 공증되지 않은 릴리스가 macOS에서 차단되면 앱을 Control-클릭한 뒤 **열기**를 선택하거나 **시스템 설정 › 개인정보 보호 및 보안**에서 해당 앱을 검토하는 Apple의 앱별 승인 절차를 사용하세요. Gatekeeper, SIP 또는 다른 macOS 보안 기능을 끄면 안 됩니다.
+로컬 자체 서명 DMG는 Apple 공증, Developer ID 서명, Apple 검증 또는 Gatekeeper의 자동 신뢰를 받은 파일이 아닙니다. 현재 공증되지 않은 릴리스 또는 로컬에서 패키징한 빌드가 macOS에서 차단되면 앱을 Control-클릭한 뒤 **열기**를 선택하거나 **시스템 설정 › 개인정보 보호 및 보안**에서 해당 앱을 검토하는 Apple의 앱별 승인 절차를 사용하세요. Gatekeeper, SIP 또는 다른 macOS 보안 기능을 끄면 안 됩니다.
 
-공개 DMG는 [GitHub Releases](https://github.com/Rotear001/NoMenu/releases)에 `NoMenu-<version>.dmg` 자산으로 올려야 합니다. 릴리스 생성과 공개는 별도의 배포 작업이며 저장소의 로컬 개발 인증서와 개인 키는 절대 포함하면 안 됩니다.
+공개 `NoMenu-1.0.dmg`는 공식 바이너리 다운로드 위치인 [GitHub Releases](https://github.com/Rotear001/NoMenu/releases/latest)에서 받을 수 있습니다. 공개 DMG는 릴리스 자산으로 제공하며 일반 저장소 이력에 커밋하면 안 됩니다. 저장소의 로컬 개발 인증서와 개인 키는 절대 포함하면 안 됩니다.
 
 ## 기술 참고 사항
 

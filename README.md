@@ -7,15 +7,35 @@ NoMenu is a macOS utility for reaching menu bar items that become inaccessible w
 > [!IMPORTANT]
 > NoMenu was designed for the menu bar behavior of macOS releases before macOS 27. macOS 27 introduced native menu bar overflow handling and changed the behavior on which NoMenu's detection depends. macOS 27 and later are therefore unsupported.
 
-Source-build instructions are provided below. Prebuilt DMG downloads will use GitHub Releases when available.
+Source-build instructions are provided below. The current prebuilt DMG is available from GitHub Releases.
 
 ## Download
 
-No public DMG is currently available.
+**NoMenu 1.0 is now available as a DMG.**
 
-> Future prebuilt DMG downloads will be published through [GitHub Releases](https://github.com/Rotear001/NoMenu/releases), the canonical binary download location.
+[Download NoMenu 1.0 from GitHub Releases](https://github.com/Rotear001/NoMenu/releases/latest)
 
-Before downloading a future release, note that NoMenu targets macOS 15–26 and does not support macOS 27 or later. The signing and notarization status of each binary will be stated in its release notes.
+The GitHub Releases page is the canonical download location. The current asset is `NoMenu-1.0.dmg` (tag `v1.0`).
+
+Installation:
+
+1. Download `NoMenu-1.0.dmg`.
+2. Open the DMG.
+3. Drag NoMenu to Applications.
+4. Launch NoMenu from Applications.
+
+> **Compatibility**
+>
+> NoMenu is designed for macOS 15–26.
+> macOS 27 and later are not supported.
+
+This build uses a local self-signed code-signing identity. It is not Apple Developer ID signed or notarized, so macOS may require its normal manual per-app approval workflow. Do not disable Gatekeeper, SIP, or other macOS security protections.
+
+SHA-256 for `NoMenu-1.0.dmg`:
+
+```text
+3f424e29f60e802de6ad003717fb4b3652cc5ef26050d488fb4844735b408e38
+```
 
 ## Project status
 
@@ -70,7 +90,7 @@ NoMenu uses Swift 6 and Swift Package Manager, then packages the executable as a
    cd NoMenu
    ```
 
-2. Create your own local signing identity as described in [Local code signing](#local-code-signing), then check it:
+2. Create your own local signing identity as described in [Local Self-Signed Code Signing](#local-self-signed-code-signing), then check it:
 
    ```sh
    ./scripts/check-local-signing.sh
@@ -92,32 +112,83 @@ NoMenu uses Swift 6 and Swift Package Manager, then packages the executable as a
 
 This workflow was verified with Apple Swift 6.4, the macOS 26.5 SDK, and a contributor-owned local signing identity. It does not modify or reset macOS privacy permissions.
 
-## Local code signing
+## Local Self-Signed Code Signing
 
-NoMenu uses a stable local signing identity during development because Accessibility and other privacy-controlled APIs are associated with the application's code identity. Reusing the same locally created identity across rebuilds can reduce repeated TCC identity changes.
+### Why local builds use a stable identity
 
-Each developer must create and keep their **own** certificate and private key. Certificates with the same display name are still different certificates; do not download or import another developer's identity.
+NoMenu uses macOS privacy-controlled functionality such as Accessibility. During local development, repeatedly rebuilding an unsigned app—or signing each build with a different identity—can make its code identity appear different to macOS. Reusing the same contributor-owned local identity helps keep that development identity consistent across builds.
 
-To create the identity with Keychain Access:
+This local identity is only for local development. It is **not** Apple Developer ID signing, Apple notarization, public trust, Apple verification, or a replacement for an official distribution certificate.
+
+### Create your own identity in Keychain Access
+
+Every contributor must create their **own** certificate and private key. Do not download or import another contributor's identity; certificates with the same display name are still cryptographically different identities.
 
 1. Open **Keychain Access**.
-2. Open **Certificate Assistant** and choose **Create a Certificate**.
-3. Set the name to **NoMenu Local Code Signing**.
+2. From the menu bar, choose **Keychain Access → Certificate Assistant → Create a Certificate…**.
+3. Set **Name** to `NoMenu Local Code Signing`.
 4. Set **Identity Type** to **Self Signed Root**.
 5. Set **Certificate Type** to **Code Signing**.
-6. Store the new identity in your login keychain.
-7. Reuse that same locally created identity for future NoMenu development builds.
+6. Create the identity and store it in your **login** keychain.
 
-Verify it with either command:
+A code-signing identity consists of the certificate and its paired private key. Both remain in the login keychain managed by Keychain Access; they do not belong in the repository.
+
+### Verify the identity
+
+Immediately after creating it, confirm that macOS recognizes it as a valid code-signing identity:
 
 ```sh
-./scripts/check-local-signing.sh
 security find-identity -v -p codesigning
 ```
 
-The helper only inspects valid signing identities. It does not create, import, export, or change trust for certificates and private keys. It also refuses missing or duplicate same-named identities rather than choosing ambiguously.
+The output must contain exactly one valid identity named `NoMenu Local Code Signing`. Then run the project-specific check from the repository root:
 
-The local identity is not Apple Developer ID signing, notarization, Gatekeeper approval, public trust, or Apple verification. Never share or commit private keys, Keychain exports, `.p12` files, PEM private keys, signing passwords, or machine-local signing configuration.
+```sh
+./scripts/check-local-signing.sh
+```
+
+The identity name is hardcoded in both the signing check and build helper; there is no environment variable for overriding it. The helper selects exactly one valid matching identity. If none exists—or if duplicate valid identities have that name—it exits with an explanation instead of choosing ambiguously.
+
+### Build and verify NoMenu
+
+Build the release configuration from the repository root:
+
+```sh
+./scripts/build-app.sh release
+```
+
+Before compiling, the build helper runs the signing check and resolves the matching identity's certificate fingerprint internally. It then builds the Swift package, creates the app bundle, signs it with that identity, and verifies its certificate-based designated requirement. A missing or ambiguous identity stops the process before compilation or replacement of the existing app bundle.
+
+The completed app is written to:
+
+```text
+build/NoMenu.app
+```
+
+Verify the resulting signature and inspect its displayed signing information with:
+
+```sh
+codesign --verify --strict --test-requirement '=identifier "com.nomenu.utility"' build/NoMenu.app
+codesign -dv --verbose=2 build/NoMenu.app
+```
+
+For a complete debug rebuild and bundle smoke check, run:
+
+```sh
+./scripts/verify.sh
+```
+
+`build-app.sh` accepts `release` or `debug`; both are locally signed development builds. It automatically selects the newest installed macOS 15–26 SDK. `SDKROOT` may select a specific compatible SDK, but it does not configure the signing identity.
+
+### If the identity is missing
+
+Open Keychain Access and confirm that the **login** keychain contains both the `NoMenu Local Code Signing` certificate and its paired private key. If it is absent, create your own identity using the steps above, then rerun `./scripts/check-local-signing.sh`. If the helper reports duplicates, remove or rename the extra identities in Keychain Access before building.
+
+The helper only inspects valid signing identities. It never creates, imports, exports, or changes trust settings for certificates or private keys.
+
+### Never upload local signing material
+
+Never share, commit, attach to a release, or otherwise upload the local signing certificate or identity, its private key, Keychain exports, `.p12`, `.pfx`, `.pem`, or `.key` files, signing passwords, or machine-local signing configuration such as `Support/DevelopmentSigning.conf`.
 
 ## DMG and distribution notes
 
@@ -129,9 +200,9 @@ Developers can package an already-built app locally with:
 
 The script reads the real app version and produces `dist/NoMenu-<version>.dmg`, containing only `NoMenu.app` and an Applications shortcut. DMGs and app bundles are ignored by Git and must not be committed to normal repository history.
 
-A local/self-signed DMG is not Apple-notarized, Developer ID signed, Apple verified, or automatically trusted by Gatekeeper. If macOS blocks a future non-notarized release, use Apple's normal per-app approval workflow—Control-click the app and choose **Open**, or review it in **System Settings › Privacy & Security**. Do not disable Gatekeeper, SIP, or other macOS security protections.
+A local/self-signed DMG is not Apple-notarized, Developer ID signed, Apple verified, or automatically trusted by Gatekeeper. If macOS blocks the current non-notarized release or a locally packaged build, use Apple's normal per-app approval workflow—Control-click the app and choose **Open**, or review it in **System Settings › Privacy & Security**. Do not disable Gatekeeper, SIP, or other macOS security protections.
 
-Public DMGs belong in [GitHub Releases](https://github.com/Rotear001/NoMenu/releases) as `NoMenu-<version>.dmg` assets. Creating and publishing a release is a separate distribution task; the repository's local development certificate and private key must never be included.
+The public `NoMenu-1.0.dmg` is available from [GitHub Releases](https://github.com/Rotear001/NoMenu/releases/latest), the canonical binary download location. Public DMGs are release assets and must not be committed to normal repository history. The repository's local development certificate and private key must never be included.
 
 ## Technical notes
 
