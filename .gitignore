@@ -1,0 +1,77 @@
+# Environment and machine-local credentials
+.env
+.env.*
+*.env
+!.env.example
+.netrc
+.npmrc
+.pypirc
+.aws/
+.ssh/
+credentials.json
+*credentials*.local.*
+secrets.*
+*.local.env
+
+# Signing material (keep locally, never publish)
+*.p12
+*.pfx
+*.cer
+*.crt
+*.key
+*.pem
+*.mobileprovision
+*.keychain
+*.keychain-db
+Support/DevelopmentSigning.conf
+
+# macOS / Swift / Xcode
+.DS_Store
+DerivedData/
+.build/
+.swiftpm/
+.module-cache/
+.swiftpm-cache/
+.cache/
+__pycache__/
+*.pyc
+xcuserdata/
+*.xcuserstate
+
+# Generated builds and archives
+build/
+dist/
+*.app/
+*.dSYM/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.dmg
+*.pkg
+
+# Local diagnostics and development evidence (retain test source)
+*.log
+diagnostics/
+logs/
+tmp/
+work/
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*~
+*.swp
+*.swo
+(A Document Being Saved By *)
+/AX-Capability-Probe-Report.txt
+/AXPress-visual-check.png
+/Top-Menu-Window-Evidence.tsv
+/Window-Compositor-Capability-Report.md
+/final-*.png
+/Tests/*Report.md
+/Tests/*Validation.md
+/Tests/stability-check.zsh
+/Tests/stability-install.zsh
