@@ -1,9 +1,19 @@
 # NoMenu
 
+**English** | [한국어](README.ko.md)
+
 NoMenu is a macOS utility for reaching menu bar items that become inaccessible when there is not enough usable menu bar space. It discovers real status items through the Accessibility API and presents confirmed overflowed items from its own menu bar panel.
 
 > [!IMPORTANT]
 > NoMenu was built around the menu bar behavior of macOS releases before macOS 27. macOS 27 introduced native menu bar overflow handling and changed the behavior on which NoMenu's overflow detection depends. As a result, macOS 27 and later are unsupported, and active feature development for those releases is not currently planned.
+
+## Download
+
+No public DMG is currently available.
+
+> Prebuilt DMG downloads will be published through [GitHub Releases](https://github.com/Rotear001/NoMenu/releases) when available. This will be the canonical download location.
+
+Before downloading a future release, note that NoMenu is intended for earlier macOS releases. macOS 27 and later are unsupported because the operating system's native menu bar overflow handling changes the behavior NoMenu relies on.
 
 ## Project status and compatibility
 
