@@ -161,6 +161,10 @@ The source is organized as follows:
 
 NoMenu began as a way to recover access to status items that could disappear when an application's menus, a display notch, or a constrained layout consumed the available menu bar space. macOS 27 later added native overflow handling, largely superseding that original purpose on newer systems.
 
+## License
+
+NoMenu is available under the MIT License. See [LICENSE](LICENSE) for details.
+
 ## Contributing
 
 The project is currently in maintenance/finalization status. Focused reports or changes for its pre-macOS 27 behavior are welcome, but support for macOS 27 and later is not an active development goal.
