@@ -5,46 +5,42 @@
 NoMenu is a macOS utility for reaching menu bar items that become inaccessible when there is not enough usable menu bar space. It discovers real status items through Accessibility and presents confirmed overflowed items in its own menu bar panel.
 
 > [!IMPORTANT]
-> NoMenu was designed for the menu bar behavior of macOS releases before macOS 27. macOS 27 introduced native menu bar overflow handling and changed the behavior on which NoMenu's detection depends. macOS 27 and later are therefore unsupported.
+> NoMenu 1.1 adds compatibility with the menu bar overflow behavior introduced in macOS 27. The current support target is macOS 15–27; the validation coverage is described below.
 
 Source-build instructions are provided below. The current prebuilt DMG is available from GitHub Releases.
 
 ## Download
 
-**NoMenu 1.0 is now available as a DMG.**
+**Latest release: NoMenu 1.1**
 
-[Download NoMenu 1.0 from GitHub Releases](https://github.com/Rotear001/NoMenu/releases/latest)
+[Download NoMenu from GitHub Releases](https://github.com/Rotear001/NoMenu/releases/latest)
 
-The GitHub Releases page is the canonical download location. The current asset is `NoMenu-1.0.dmg` (tag `v1.0`).
+The GitHub Releases page is the canonical download location. The current asset is `NoMenu-1.1.dmg` (tag `v1.1`). The previous [NoMenu 1.0 release](https://github.com/Rotear001/NoMenu/releases/tag/v1.0) remains available.
 
 Installation:
 
-1. Download `NoMenu-1.0.dmg`.
+1. Download `NoMenu-1.1.dmg`.
 2. Open the DMG.
 3. Drag NoMenu to Applications.
 4. Launch NoMenu from Applications.
 
 > **Compatibility**
 >
-> NoMenu is designed for macOS 15–26.
-> macOS 27 and later are not supported.
+> NoMenu 1.1 targets macOS 15–27, including the new macOS 27 menu bar environment.
 
-This build uses a local self-signed code-signing identity. It is not Apple Developer ID signed or notarized, so macOS may require its normal manual per-app approval workflow. Do not disable Gatekeeper, SIP, or other macOS security protections.
+The public DMG contains an app signed with the maintainer's local self-signed code-signing identity. It is not Apple Developer ID signed or notarized, so macOS may require its normal manual per-app approval workflow. You do not need to create or import a signing identity to use the DMG. Do not disable Gatekeeper, SIP, or other macOS security protections.
 
-SHA-256 for `NoMenu-1.0.dmg`:
-
-```text
-3f424e29f60e802de6ad003717fb4b3652cc5ef26050d488fb4844735b408e38
-```
+The SHA-256 checksum for `NoMenu-1.1.dmg` is published in its release notes.
 
 ## Project status
 
-NoMenu is in maintenance/finalization status. Its original problem is largely handled by macOS 27's native overflow behavior, so active feature development for macOS 27 and later is not planned.
+NoMenu 1.1 is a compatibility and reliability update. It adds support for the menu bar behavior introduced in macOS 27 while preserving the existing legacy code path for earlier supported macOS releases.
 
 ## Features
 
 - Discovers menu bar items exposed by running applications through macOS Accessibility.
-- Classifies items as visible, overflowed, or unknown using Accessibility geometry, display safe areas, the active application's menu extent, and on-screen compositor evidence. Only confirmed overflowed items are shown.
+- Classifies items as visible, overflowed, or unknown using Accessibility geometry, display safe areas, the active application's menu extent, and on-screen compositor evidence. On macOS 27, verified native menu bar and overflow-boundary evidence identifies native-overflow-managed items, including while Apple's overflow is expanded.
+- Discovers macOS 27 system status items through one verified Accessibility hosting-group level, while retaining direct-child discovery on earlier macOS releases.
 - Interacts with supported items through their Accessibility actions. When an accessible menu tree is available, NoMenu presents a native proxy menu and invokes the corresponding real menu actions.
 - Supports direct switching between discovered items while interacting with the panel.
 - Orders items by menu bar position, recent use, or name.
@@ -58,10 +54,13 @@ NoMenu is in maintenance/finalization status. Its original problem is largely ha
 | | Support |
 | --- | --- |
 | Deployment target | macOS 15.0 |
-| macOS 15–26 | Target platform for NoMenu's original menu bar behavior |
-| macOS 27 and later | Unsupported |
+| macOS 15–26 | Preserved legacy path; build and regression tested |
+| macOS 27 | v1.1 compatibility path; directly runtime tested on macOS 27.0 (26A428) |
+| Current support target | macOS 15–27 |
 
-The deployment target is defined in both `Package.swift` and `Support/Info.plist`. It is a build target, not a claim that every macOS 15–26 release and menu bar implementation has been individually validated.
+The deployment target remains macOS 15.0 in both `Package.swift` and `Support/Info.plist`. macOS 27 was directly runtime tested for discovery, native overflow expansion/collapse, panel membership, and representative third-party menu activation. The legacy path was preserved and build/regression tested with the macOS 26.5 SDK and deployment target macOS 15.0. Separate physical macOS 15–26 runtime testing was not performed for every version during this release.
+
+The detailed validation scope and public API limits are recorded in the [v1.1 implementation report](docs/NoMenu-v1.1-macOS27-implementation.md).
 
 The build helper requires an installed macOS 15–26 SDK and deliberately avoids the macOS 27 SDK. It selects the newest compatible SDK in the active Xcode or Command Line Tools installation.
 
@@ -202,7 +201,7 @@ The script reads the real app version and produces `dist/NoMenu-<version>.dmg`, 
 
 A local/self-signed DMG is not Apple-notarized, Developer ID signed, Apple verified, or automatically trusted by Gatekeeper. If macOS blocks the current non-notarized release or a locally packaged build, use Apple's normal per-app approval workflow—Control-click the app and choose **Open**, or review it in **System Settings › Privacy & Security**. Do not disable Gatekeeper, SIP, or other macOS security protections.
 
-The public `NoMenu-1.0.dmg` is available from [GitHub Releases](https://github.com/Rotear001/NoMenu/releases/latest), the canonical binary download location. Public DMGs are release assets and must not be committed to normal repository history. The repository's local development certificate and private key must never be included.
+The public `NoMenu-1.1.dmg` is available from [GitHub Releases](https://github.com/Rotear001/NoMenu/releases/latest), the canonical binary download location. Public DMGs are release assets and must not be committed to normal repository history. The maintainer's local development certificate and private key must never be exported or included as distribution files. Source developers must create their own identity using the guide above.
 
 ## Technical notes
 
@@ -222,15 +221,16 @@ The source is organized as follows:
 
 ## Known limitations
 
-- macOS 27 and later are unsupported because the operating system handles menu bar overflow differently.
+- The macOS 27 path is validated against build 26A428's public Accessibility hierarchy and geometry. Unrecognized native layouts fall back to the original classifier; later system changes may require new validation.
 - Discovery and interaction depend on the Accessibility roles, geometry, menus, and actions exposed by each application. Custom menu bar implementations may not be discoverable or fully interactive.
-- NoMenu deliberately withholds items whose overflow state cannot be established reliably.
+- NoMenu deliberately withholds items whose overflow state cannot be established reliably. On macOS 27, overflow membership denotes the native managed set, even while its items are expanded on screen.
+- System extras are discovered, but system popover activation and unreadable/non-menu interaction kinds were not comprehensively exercised for v1.1.
 - Screen Recording permission and capturable, composited on-screen pixels are required for Live Artwork; cached artwork or an application icon may be shown instead.
 - Public macOS APIs do not expose another application's underlying `NSStatusItem` object.
 
 ## Why NoMenu exists
 
-NoMenu began as a way to recover access to status items that could disappear when an application's menus, a display notch, or a constrained layout consumed the available menu bar space. macOS 27 later added native overflow handling, largely superseding that original purpose on newer systems.
+NoMenu began as a way to recover access to status items that could disappear when an application's menus, a display notch, or a constrained layout consumed the available menu bar space. NoMenu 1.1 adapts its discovery and classification to macOS 27's native overflow environment so the existing panel can continue presenting overflow-managed items.
 
 ## License
 
@@ -238,4 +238,4 @@ NoMenu is available under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contributing
 
-The project is currently in maintenance/finalization status. Focused reports or changes for its pre-macOS 27 behavior are welcome, but support for macOS 27 and later is not an active development goal.
+Focused compatibility and reliability reports for macOS 15–27 are welcome. Include the macOS version, display setup, and a reproducible description; remove personal paths, credentials, signing material, and private data from any evidence.
