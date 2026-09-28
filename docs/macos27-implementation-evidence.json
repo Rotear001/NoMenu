@@ -1,0 +1,2085 @@
+{
+  "date": "2026-09-28",
+  "os": "macOS 27.0 (26A428)",
+  "scope": "bounded AX group discovery and native menu-bar environment/overflow classification only",
+  "nativeOverflowManipulation": "All Show/Hide transitions were performed manually by the user; no automated/synthetic native-overflow clicks.",
+  "phases": {
+    "groupOnlyCollapsedA": {
+      "measurement": "public AX/CG read-only; unbundled production-source probe",
+      "classifier": "unchanged legacy classifier; bounded group discovery already added",
+      "displays": [
+        {
+          "appKitFrame": "{{0, 0}, {1512, 982}}",
+          "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+          "cgBounds": "{{0, 0}, {1512, 982}}",
+          "displayID": 1,
+          "kind": "display",
+          "safeTop": 32,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{0, 0}, {1512, 949}}"
+        }
+      ],
+      "rawSummary": {
+        "items": 14,
+        "kind": "summary",
+        "overflowed": 0,
+        "unknown": 14,
+        "visible": 0
+      },
+      "productionEquivalentSummary": {
+        "items": 14,
+        "visible": 0,
+        "overflowed": 0,
+        "unknown": 14
+      },
+      "onScreenMenuBarWindows": [
+        {
+          "frame": "{{0, 0}, {1512, 33}}",
+          "id": 79049,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        }
+      ],
+      "nativeExtras": [
+        {
+          "path": "1049/AXExtrasMenuBar",
+          "pid": 1049,
+          "role": "AXMenuBar",
+          "frame": "{{888, 0}, {604, 33}}"
+        }
+      ],
+      "nativeOverflowControls": [
+        {
+          "path": "1049/AXExtrasMenuBar/4",
+          "pid": 1049,
+          "role": "AXButton",
+          "frame": "{{887, 1}, {17.5, 30}}",
+          "description": "Show Hidden Menu Bar Items",
+          "actions": []
+        }
+      ],
+      "items": [
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/0/0",
+          "identifier": "com.apple.menuextra.wifi",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1208, 5.5}, {22, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/1/0",
+          "identifier": "com.apple.menuextra.battery",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1246, 5.5}, {26, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/2/0",
+          "identifier": "com.apple.menuextra.controlcenter",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1320, 5.5}, {26, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/3/0",
+          "identifier": "com.apple.menuextra.clock",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1362, 5.5}, {130, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.campo::Spotlight::0",
+          "bundle": "com.apple.campo",
+          "pid": 2071,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1279, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.TextInputMenuAgent::ABC::0",
+          "bundle": "com.apple.TextInputMenuAgent",
+          "pid": 2277,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1155, 4.5}, {46, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+          "bundle": "com.injisung0818.NoNoTcH",
+          "pid": 19223,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{911, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.kyome.RunCat::RunCat::0",
+          "bundle": "com.kyome.RunCat",
+          "pid": 19255,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1015, 4.5}, {56, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+          "bundle": "whbalzac.Dongtaizhuomian",
+          "pid": 26813,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{871, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+          "bundle": "com.surfshark.vpnclient.macos.direct",
+          "pid": 69560,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{873, 4.5}, {24, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.openai.codex::ChatGPT::0",
+          "bundle": "com.openai.codex",
+          "pid": 85557,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{951, 4.5}, {24, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.madrascheck.flow::flow::0",
+          "bundle": "com.madrascheck.flow",
+          "pid": 86348,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{981, 4.5}, {36, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+          "bundle": "com.hoppe.desktoppet",
+          "pid": 94545,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{855, -0.5}, {50, 34}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.kimjaeyun.codexusagemonitor::AI | --%::0",
+          "bundle": "com.kimjaeyun.codexusagemonitor",
+          "pid": 94637,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1069, 4.5}, {88, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        }
+      ],
+      "duplicateStableIdentities": 0
+    },
+    "groupOnlyExpandedB": {
+      "measurement": "public AX/CG read-only; unbundled production-source probe",
+      "classifier": "unchanged legacy classifier; bounded group discovery already added",
+      "displays": [
+        {
+          "appKitFrame": "{{0, 0}, {1512, 982}}",
+          "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+          "cgBounds": "{{0, 0}, {1512, 982}}",
+          "displayID": 1,
+          "kind": "display",
+          "safeTop": 32,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{0, 0}, {1512, 949}}"
+        }
+      ],
+      "rawSummary": {
+        "items": 14,
+        "kind": "summary",
+        "overflowed": 3,
+        "unknown": 11,
+        "visible": 0
+      },
+      "productionEquivalentSummary": {
+        "items": 14,
+        "visible": 0,
+        "overflowed": 3,
+        "unknown": 11
+      },
+      "onScreenMenuBarWindows": [
+        {
+          "frame": "{{0, 0}, {1512, 33}}",
+          "id": 79049,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        }
+      ],
+      "nativeExtras": [
+        {
+          "path": "1049/AXExtrasMenuBar",
+          "pid": 1049,
+          "role": "AXMenuBar",
+          "frame": "{{888, 0}, {604, 33}}"
+        }
+      ],
+      "nativeOverflowControls": [
+        {
+          "path": "1049/AXExtrasMenuBar/4",
+          "pid": 1049,
+          "role": "AXButton",
+          "frame": "{{887, 1}, {17.5, 30}}",
+          "description": "Hide Menu Bar Items",
+          "actions": []
+        }
+      ],
+      "items": [
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/0/0",
+          "identifier": "com.apple.menuextra.wifi",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1208, 5.5}, {22, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/1/0",
+          "identifier": "com.apple.menuextra.battery",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1246, 5.5}, {26, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/2/0",
+          "identifier": "com.apple.menuextra.controlcenter",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1320, 5.5}, {26, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/3/0",
+          "identifier": "com.apple.menuextra.clock",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1362, 5.5}, {130, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.campo::Spotlight::0",
+          "bundle": "com.apple.campo",
+          "pid": 2071,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1279, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.TextInputMenuAgent::2-Set Korean::0",
+          "bundle": "com.apple.TextInputMenuAgent",
+          "pid": 2277,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1155, 4.5}, {46, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+          "bundle": "com.injisung0818.NoNoTcH",
+          "pid": 19223,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{911, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.kyome.RunCat::RunCat::0",
+          "bundle": "com.kyome.RunCat",
+          "pid": 19255,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1015, 4.5}, {56, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+          "bundle": "whbalzac.Dongtaizhuomian",
+          "pid": 26813,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{610, 4.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+          "bundle": "com.surfshark.vpnclient.macos.direct",
+          "pid": 69560,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{580, 4.5}, {24, 24}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.openai.codex::ChatGPT::0",
+          "bundle": "com.openai.codex",
+          "pid": 85557,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{951, 4.5}, {24, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.madrascheck.flow::flow::0",
+          "bundle": "com.madrascheck.flow",
+          "pid": 86348,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{981, 4.5}, {36, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+          "bundle": "com.hoppe.desktoppet",
+          "pid": 94545,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{524, -0.5}, {50, 34}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kimjaeyun.codexusagemonitor::AI | --%::0",
+          "bundle": "com.kimjaeyun.codexusagemonitor",
+          "pid": 94637,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1069, 4.5}, {88, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        }
+      ],
+      "duplicateStableIdentities": 0
+    },
+    "groupOnlyCollapsedC": {
+      "measurement": "public AX/CG read-only; unbundled production-source probe",
+      "classifier": "unchanged legacy classifier; bounded group discovery already added",
+      "displays": [
+        {
+          "appKitFrame": "{{0, 0}, {1512, 982}}",
+          "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+          "cgBounds": "{{0, 0}, {1512, 982}}",
+          "displayID": 1,
+          "kind": "display",
+          "safeTop": 32,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{0, 0}, {1512, 949}}"
+        }
+      ],
+      "rawSummary": {
+        "items": 14,
+        "kind": "summary",
+        "overflowed": 0,
+        "unknown": 14,
+        "visible": 0
+      },
+      "productionEquivalentSummary": {
+        "items": 14,
+        "visible": 0,
+        "overflowed": 0,
+        "unknown": 14
+      },
+      "onScreenMenuBarWindows": [
+        {
+          "frame": "{{0, 0}, {1512, 33}}",
+          "id": 79049,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        }
+      ],
+      "nativeExtras": [
+        {
+          "path": "1049/AXExtrasMenuBar",
+          "pid": 1049,
+          "role": "AXMenuBar",
+          "frame": "{{888, 0}, {604, 33}}"
+        }
+      ],
+      "nativeOverflowControls": [
+        {
+          "path": "1049/AXExtrasMenuBar/4",
+          "pid": 1049,
+          "role": "AXButton",
+          "frame": "{{887, 1}, {17.5, 30}}",
+          "description": "Show Hidden Menu Bar Items",
+          "actions": []
+        }
+      ],
+      "items": [
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/0/0",
+          "identifier": "com.apple.menuextra.wifi",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1208, 5.5}, {22, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/1/0",
+          "identifier": "com.apple.menuextra.battery",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1246, 5.5}, {26, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/2/0",
+          "identifier": "com.apple.menuextra.controlcenter",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1320, 5.5}, {26, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/3/0",
+          "identifier": "com.apple.menuextra.clock",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1362, 5.5}, {130, 22}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.campo::Spotlight::0",
+          "bundle": "com.apple.campo",
+          "pid": 2071,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1279, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.TextInputMenuAgent::2-Set Korean::0",
+          "bundle": "com.apple.TextInputMenuAgent",
+          "pid": 2277,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1155, 4.5}, {46, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+          "bundle": "com.injisung0818.NoNoTcH",
+          "pid": 19223,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{911, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.kyome.RunCat::RunCat::0",
+          "bundle": "com.kyome.RunCat",
+          "pid": 19255,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1015, 4.5}, {56, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+          "bundle": "whbalzac.Dongtaizhuomian",
+          "pid": 26813,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{871, 4.5}, {34, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+          "bundle": "com.surfshark.vpnclient.macos.direct",
+          "pid": 69560,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{873, 4.5}, {24, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.openai.codex::ChatGPT::0",
+          "bundle": "com.openai.codex",
+          "pid": 85557,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{951, 4.5}, {24, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.madrascheck.flow::flow::0",
+          "bundle": "com.madrascheck.flow",
+          "pid": 86348,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{981, 4.5}, {36, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+          "bundle": "com.hoppe.desktoppet",
+          "pid": 94545,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{855, -0.5}, {50, 34}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.kimjaeyun.codexusagemonitor::AI | --%::0",
+          "bundle": "com.kimjaeyun.codexusagemonitor",
+          "pid": 94637,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1069, 4.5}, {88, 24}}",
+          "classification": "unknown",
+          "reason": "The menu bar is not currently exposed; deferring classification",
+          "panelEligible": false
+        }
+      ],
+      "duplicateStableIdentities": 0
+    },
+    "patchedCollapsedBeforeAppLaunch": {
+      "measurement": "public AX/CG read-only; unbundled production-source probe",
+      "classifier": "macOS27 compatibility classifier",
+      "displays": [
+        {
+          "appKitFrame": "{{0, 0}, {1512, 982}}",
+          "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+          "cgBounds": "{{0, 0}, {1512, 982}}",
+          "displayID": 1,
+          "kind": "display",
+          "safeTop": 32,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{0, 0}, {1512, 949}}"
+        }
+      ],
+      "rawSummary": {
+        "items": 14,
+        "kind": "summary",
+        "overflowed": 3,
+        "unknown": 0,
+        "visible": 11
+      },
+      "productionEquivalentSummary": {
+        "items": 14,
+        "visible": 11,
+        "overflowed": 3,
+        "unknown": 0
+      },
+      "onScreenMenuBarWindows": [
+        {
+          "frame": "{{0, 0}, {1512, 33}}",
+          "id": 79049,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        }
+      ],
+      "nativeExtras": [],
+      "nativeOverflowControls": [],
+      "items": [
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/0/0",
+          "identifier": "com.apple.menuextra.wifi",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1208, 5.5}, {22, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/1/0",
+          "identifier": "com.apple.menuextra.battery",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1246, 5.5}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/2/0",
+          "identifier": "com.apple.menuextra.controlcenter",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1320, 5.5}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/3/0",
+          "identifier": "com.apple.menuextra.clock",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1362, 5.5}, {130, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.campo::Spotlight::0",
+          "bundle": "com.apple.campo",
+          "pid": 2071,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1279, 4.5}, {34, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.TextInputMenuAgent::2-Set Korean::0",
+          "bundle": "com.apple.TextInputMenuAgent",
+          "pid": 2277,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1155, 4.5}, {46, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+          "bundle": "com.injisung0818.NoNoTcH",
+          "pid": 19223,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{911, 4.5}, {34, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.kyome.RunCat::RunCat::0",
+          "bundle": "com.kyome.RunCat",
+          "pid": 19255,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1015, 4.5}, {56, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+          "bundle": "whbalzac.Dongtaizhuomian",
+          "pid": 26813,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{871, 4.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+          "bundle": "com.surfshark.vpnclient.macos.direct",
+          "pid": 69560,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{873, 4.5}, {24, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.openai.codex::ChatGPT::0",
+          "bundle": "com.openai.codex",
+          "pid": 85557,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{951, 4.5}, {24, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.madrascheck.flow::flow::0",
+          "bundle": "com.madrascheck.flow",
+          "pid": 86348,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{981, 4.5}, {36, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+          "bundle": "com.hoppe.desktoppet",
+          "pid": 94545,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{855, -0.5}, {50, 34}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kimjaeyun.codexusagemonitor::AI | --%::0",
+          "bundle": "com.kimjaeyun.codexusagemonitor",
+          "pid": 94637,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1069, 4.5}, {88, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        }
+      ],
+      "duplicateStableIdentities": 0
+    },
+    "patchedExpanded": {
+      "measurement": "public AX/CG read-only; unbundled production-source probe",
+      "classifier": "macOS27 compatibility classifier",
+      "displays": [
+        {
+          "appKitFrame": "{{0, 0}, {1512, 982}}",
+          "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+          "cgBounds": "{{0, 0}, {1512, 982}}",
+          "displayID": 1,
+          "kind": "display",
+          "safeTop": 32,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{0, 0}, {1512, 949}}"
+        }
+      ],
+      "rawSummary": {
+        "items": 16,
+        "kind": "summary",
+        "overflowed": 6,
+        "unknown": 0,
+        "visible": 10
+      },
+      "productionEquivalentSummary": {
+        "items": 15,
+        "visible": 9,
+        "overflowed": 6,
+        "unknown": 0
+      },
+      "onScreenMenuBarWindows": [
+        {
+          "frame": "{{0, 0}, {1512, 33}}",
+          "id": 79049,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        }
+      ],
+      "nativeExtras": [
+        {
+          "path": "1049/AXExtrasMenuBar",
+          "pid": 1049,
+          "role": "AXMenuBar",
+          "frame": "{{894, 0}, {595, 33}}"
+        }
+      ],
+      "nativeOverflowControls": [
+        {
+          "path": "1049/AXExtrasMenuBar/5",
+          "pid": 1049,
+          "role": "AXButton",
+          "frame": "{{893, 1}, {17.5, 30}}",
+          "description": "Hide Menu Bar Items",
+          "actions": []
+        }
+      ],
+      "items": [
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.audiovideo::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/0/0",
+          "identifier": "com.apple.menuextra.audiovideo",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{932, 5.5}, {20, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/1/0",
+          "identifier": "com.apple.menuextra.wifi",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1208, 5.5}, {22, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/2/0",
+          "identifier": "com.apple.menuextra.battery",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1246, 5.5}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/3/0",
+          "identifier": "com.apple.menuextra.controlcenter",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1320, 5.5}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/4/0",
+          "identifier": "com.apple.menuextra.clock",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1359, 5.5}, {130, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.campo::Spotlight::0",
+          "bundle": "com.apple.campo",
+          "pid": 2071,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1279, 4.5}, {34, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.TextInputMenuAgent::2-Set Korean::0",
+          "bundle": "com.apple.TextInputMenuAgent",
+          "pid": 2277,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1155, 4.5}, {46, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+          "bundle": "com.injisung0818.NoNoTcH",
+          "pid": 19223,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{538, 4.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kyome.RunCat::RunCat::0",
+          "bundle": "com.kyome.RunCat",
+          "pid": 19255,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1015, 4.5}, {56, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+          "bundle": "whbalzac.Dongtaizhuomian",
+          "pid": 26813,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{506, 4.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+          "bundle": "com.surfshark.vpnclient.macos.direct",
+          "pid": 69560,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{476, 4.5}, {24, 24}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.openai.codex::ChatGPT::0",
+          "bundle": "com.openai.codex",
+          "pid": 85557,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{578, 4.5}, {24, 24}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.madrascheck.flow::flow::0",
+          "bundle": "com.madrascheck.flow",
+          "pid": 86348,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{608, 4.5}, {36, 24}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+          "bundle": "com.hoppe.desktoppet",
+          "pid": 94545,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{420, -0.5}, {50, 34}}",
+          "classification": "overflowed",
+          "reason": "AX frame intersects the display's unsafe/notch area",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kimjaeyun.codexusagemonitor::AI | --%::0",
+          "bundle": "com.kimjaeyun.codexusagemonitor",
+          "pid": 94637,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1069, 4.5}, {88, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        }
+      ],
+      "duplicateStableIdentities": 0
+    },
+    "patchedRecollapsed": {
+      "measurement": "public AX/CG read-only; unbundled production-source probe",
+      "classifier": "macOS27 compatibility classifier",
+      "displays": [
+        {
+          "appKitFrame": "{{0, 0}, {1512, 982}}",
+          "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+          "cgBounds": "{{0, 0}, {1512, 982}}",
+          "displayID": 1,
+          "kind": "display",
+          "safeTop": 32,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{0, 0}, {1512, 949}}"
+        }
+      ],
+      "rawSummary": {
+        "items": 16,
+        "kind": "summary",
+        "overflowed": 6,
+        "unknown": 0,
+        "visible": 10
+      },
+      "productionEquivalentSummary": {
+        "items": 15,
+        "visible": 9,
+        "overflowed": 6,
+        "unknown": 0
+      },
+      "onScreenMenuBarWindows": [
+        {
+          "frame": "{{0, 0}, {1512, 33}}",
+          "id": 79049,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        }
+      ],
+      "nativeExtras": [
+        {
+          "path": "1049/AXExtrasMenuBar",
+          "pid": 1049,
+          "role": "AXMenuBar",
+          "frame": "{{894, 0}, {595, 33}}"
+        }
+      ],
+      "nativeOverflowControls": [
+        {
+          "path": "1049/AXExtrasMenuBar/5",
+          "pid": 1049,
+          "role": "AXButton",
+          "frame": "{{893, 1}, {17.5, 30}}",
+          "description": "Show Hidden Menu Bar Items",
+          "actions": []
+        }
+      ],
+      "items": [
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.audiovideo::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/0/0",
+          "identifier": "com.apple.menuextra.audiovideo",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{932, 5.5}, {20, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/1/0",
+          "identifier": "com.apple.menuextra.wifi",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1208, 5.5}, {22, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/2/0",
+          "identifier": "com.apple.menuextra.battery",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1246, 5.5}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/3/0",
+          "identifier": "com.apple.menuextra.controlcenter",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1320, 5.5}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 1049,
+          "path": "AXExtrasMenuBar/4/0",
+          "identifier": "com.apple.menuextra.clock",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1359, 5.5}, {130, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.campo::Spotlight::0",
+          "bundle": "com.apple.campo",
+          "pid": 2071,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1279, 4.5}, {34, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.TextInputMenuAgent::2-Set Korean::0",
+          "bundle": "com.apple.TextInputMenuAgent",
+          "pid": 2277,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1155, 4.5}, {46, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+          "bundle": "com.injisung0818.NoNoTcH",
+          "pid": 19223,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{877, 4.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kyome.RunCat::RunCat::0",
+          "bundle": "com.kyome.RunCat",
+          "pid": 19255,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1015, 4.5}, {56, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+          "bundle": "whbalzac.Dongtaizhuomian",
+          "pid": 26813,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{877, 4.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+          "bundle": "com.surfshark.vpnclient.macos.direct",
+          "pid": 69560,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{879, 4.5}, {24, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.openai.codex::ChatGPT::0",
+          "bundle": "com.openai.codex",
+          "pid": 85557,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{879, 4.5}, {24, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.madrascheck.flow::flow::0",
+          "bundle": "com.madrascheck.flow",
+          "pid": 86348,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{875, 4.5}, {36, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+          "bundle": "com.hoppe.desktoppet",
+          "pid": 94545,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{861, -0.5}, {50, 34}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kimjaeyun.codexusagemonitor::AI | --%::0",
+          "bundle": "com.kimjaeyun.codexusagemonitor",
+          "pid": 94637,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1069, 4.5}, {88, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        }
+      ],
+      "duplicateStableIdentities": 0
+    },
+    "finalTwoDisplays": {
+      "measurement": "public AX/CG read-only; unbundled production-source probe",
+      "classifier": "macOS27 compatibility classifier",
+      "displays": [
+        {
+          "appKitFrame": "{{0, 0}, {1512, 982}}",
+          "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+          "cgBounds": "{{0, 0}, {1512, 982}}",
+          "displayID": 1,
+          "kind": "display",
+          "safeTop": 32,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{0, 0}, {1512, 949}}"
+        },
+        {
+          "appKitFrame": "{{1512, 90}, {1135, 789}}",
+          "auxiliaryRight": "{{0, 0}, {0, 0}}",
+          "cgBounds": "{{1512, 103}, {1135, 789}}",
+          "displayID": 40,
+          "kind": "display",
+          "safeTop": 0,
+          "scale": 2,
+          "statusThickness": 22,
+          "visibleFrame": "{{1512, 90}, {1135, 789}}"
+        }
+      ],
+      "rawSummary": {
+        "items": 17,
+        "kind": "summary",
+        "overflowed": 4,
+        "unknown": 0,
+        "visible": 13
+      },
+      "productionEquivalentSummary": {
+        "items": 16,
+        "visible": 12,
+        "overflowed": 4,
+        "unknown": 0
+      },
+      "onScreenMenuBarWindows": [
+        {
+          "frame": "{{1512, 103}, {1135, 30}}",
+          "id": 79645,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        },
+        {
+          "frame": "{{0, 0}, {1512, 33}}",
+          "id": 79047,
+          "kind": "menuBarWindow",
+          "layer": 24,
+          "onScreen": true,
+          "passesSlotWidth": false,
+          "pid": 599
+        }
+      ],
+      "nativeExtras": [
+        {
+          "path": "95629/AXExtrasMenuBar",
+          "pid": 95629,
+          "role": "AXMenuBar",
+          "frame": "{{1908.5, 103}, {715.5, 30}}"
+        }
+      ],
+      "nativeOverflowControls": [
+        {
+          "path": "95629/AXExtrasMenuBar/6",
+          "pid": 95629,
+          "role": "AXButton",
+          "frame": "{{1907.5, 104}, {17.5, 27}}",
+          "description": "Show Hidden Menu Bar Items",
+          "actions": []
+        }
+      ],
+      "items": [
+        {
+          "stableID": "com.apple.campo::Spotlight::0",
+          "bundle": "com.apple.campo",
+          "pid": 2071,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2414, 106.5}, {34, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.TextInputMenuAgent::2-Set Korean::0",
+          "bundle": "com.apple.TextInputMenuAgent",
+          "pid": 2277,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2290, 106.5}, {46, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+          "bundle": "com.injisung0818.NoNoTcH",
+          "pid": 19223,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1891, 106.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kyome.RunCat::RunCat::0",
+          "bundle": "com.kyome.RunCat",
+          "pid": 19255,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2100, 106.5}, {56, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+          "bundle": "whbalzac.Dongtaizhuomian",
+          "pid": 26813,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1891, 106.5}, {34, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+          "bundle": "com.surfshark.vpnclient.macos.direct",
+          "pid": 69560,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1893, 106.5}, {24, 24}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.openai.codex::ChatGPT::0",
+          "bundle": "com.openai.codex",
+          "pid": 85557,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1987, 106.5}, {24, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.madrascheck.flow::flow::0",
+          "bundle": "com.madrascheck.flow",
+          "pid": 86348,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2017, 106.5}, {36, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+          "bundle": "com.hoppe.desktoppet",
+          "pid": 94545,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1875, 101.5}, {50, 34}}",
+          "classification": "overflowed",
+          "reason": "AX item belongs to the macOS 27 native overflow region",
+          "panelEligible": true
+        },
+        {
+          "stableID": "com.kimjaeyun.codexusagemonitor::AI | --%::0",
+          "bundle": "com.kimjaeyun.codexusagemonitor",
+          "pid": 94637,
+          "path": "AXExtrasMenuBar/0",
+          "identifier": "<absent>",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2204, 106.5}, {88, 24}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.audiovideo::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 95629,
+          "path": "AXExtrasMenuBar/0/0",
+          "identifier": "com.apple.menuextra.audiovideo",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{1946, 107}, {20, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.screen-mirroring::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 95629,
+          "path": "AXExtrasMenuBar/1/0",
+          "identifier": "com.apple.menuextra.screen-mirroring",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2066.5, 107}, {20.5, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 95629,
+          "path": "AXExtrasMenuBar/2/0",
+          "identifier": "com.apple.menuextra.wifi",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2343, 107}, {22, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 95629,
+          "path": "AXExtrasMenuBar/3/0",
+          "identifier": "com.apple.menuextra.battery",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2381, 107}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 95629,
+          "path": "AXExtrasMenuBar/4/0",
+          "identifier": "com.apple.menuextra.controlcenter",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2455, 107}, {26, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        },
+        {
+          "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+          "bundle": "com.apple.MenuBarAgent",
+          "pid": 95629,
+          "path": "AXExtrasMenuBar/5/0",
+          "identifier": "com.apple.menuextra.clock",
+          "role": "AXMenuBarItem",
+          "subrole": "AXMenuExtra",
+          "frame": "{{2494, 107}, {130, 22}}",
+          "classification": "visible",
+          "reason": "Usable AX geometry in a verified on-screen macOS 27 menu bar",
+          "panelEligible": false
+        }
+      ],
+      "duplicateStableIdentities": 0
+    }
+  },
+  "representativeCorrespondence": [
+    {
+      "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.wifi::0",
+      "pid": 1049,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/0/0",
+      "framesA_B_C": [
+        "{{1208, 5.5}, {22, 22}}",
+        "{{1208, 5.5}, {22, 22}}",
+        "{{1208, 5.5}, {22, 22}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.battery::0",
+      "pid": 1049,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/1/0",
+      "framesA_B_C": [
+        "{{1246, 5.5}, {26, 22}}",
+        "{{1246, 5.5}, {26, 22}}",
+        "{{1246, 5.5}, {26, 22}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.controlcenter::0",
+      "pid": 1049,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/2/0",
+      "framesA_B_C": [
+        "{{1320, 5.5}, {26, 22}}",
+        "{{1320, 5.5}, {26, 22}}",
+        "{{1320, 5.5}, {26, 22}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "com.apple.MenuBarAgent::com.apple.menuextra.clock::0",
+      "pid": 1049,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/3/0",
+      "framesA_B_C": [
+        "{{1362, 5.5}, {130, 22}}",
+        "{{1362, 5.5}, {130, 22}}",
+        "{{1362, 5.5}, {130, 22}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+      "pid": 19223,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/0",
+      "framesA_B_C": [
+        "{{911, 4.5}, {34, 24}}",
+        "{{911, 4.5}, {34, 24}}",
+        "{{911, 4.5}, {34, 24}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "com.kyome.RunCat::RunCat::0",
+      "pid": 19255,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/0",
+      "framesA_B_C": [
+        "{{1015, 4.5}, {56, 24}}",
+        "{{1015, 4.5}, {56, 24}}",
+        "{{1015, 4.5}, {56, 24}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+      "pid": 26813,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/0",
+      "framesA_B_C": [
+        "{{871, 4.5}, {34, 24}}",
+        "{{610, 4.5}, {34, 24}}",
+        "{{871, 4.5}, {34, 24}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "overflowed",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+      "pid": 69560,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/0",
+      "framesA_B_C": [
+        "{{873, 4.5}, {24, 24}}",
+        "{{580, 4.5}, {24, 24}}",
+        "{{873, 4.5}, {24, 24}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "overflowed",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    },
+    {
+      "stableID": "com.hoppe.desktoppet::Desktop Butter::0",
+      "pid": 94545,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "path": "AXExtrasMenuBar/0",
+      "framesA_B_C": [
+        "{{855, -0.5}, {50, 34}}",
+        "{{524, -0.5}, {50, 34}}",
+        "{{855, -0.5}, {50, 34}}"
+      ],
+      "legacyClassifierA_B_C": [
+        "unknown",
+        "overflowed",
+        "unknown"
+      ],
+      "sameIdentityPIDRolePath": true
+    }
+  ],
+  "inputSourceIdentityLimitation": {
+    "pid": 2277,
+    "stableIDA": "com.apple.TextInputMenuAgent::ABC::0",
+    "stableIDB_C": "com.apple.TextInputMenuAgent::2-Set Korean::0",
+    "cause": "existing title fallback changes when the input source changes; not caused by overflow expansion"
+  },
+  "actualPanelSnapshots": {
+    "collapsedBeforeFinalExpansion": [
+      "Desktop Butter",
+      "flow",
+      "Sparkle Star",
+      "Dynamic Wallpaper",
+      "연결이 해제됨",
+      "ChatGPT"
+    ],
+    "expanded": [
+      "Desktop Butter",
+      "연결이 해제됨",
+      "Dynamic Wallpaper",
+      "Sparkle Star",
+      "ChatGPT",
+      "flow"
+    ],
+    "recollapsed": [
+      "Desktop Butter",
+      "flow",
+      "Sparkle Star",
+      "Dynamic Wallpaper",
+      "연결이 해제됨",
+      "ChatGPT"
+    ],
+    "finalTwoDisplays": [
+      "Desktop Butter",
+      "Sparkle Star",
+      "Dynamic Wallpaper",
+      "연결이 해제됨"
+    ],
+    "orderExplanation": "Existing geometry/recent-use sorting was untouched; compare stable identities, not positions."
+  },
+  "activationChecks": [
+    {
+      "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+      "expectedPID": 19223,
+      "actualPID": 19223,
+      "pidLookupResult": 0,
+      "kind": "menuTree",
+      "proxyRootItems": 5,
+      "finalTargetMatchesStableIdentity": true,
+      "interactionCodeChanged": false
+    },
+    {
+      "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+      "expectedPID": 26813,
+      "actualPID": 26813,
+      "pidLookupResult": 0,
+      "kind": "menuTree",
+      "proxyRootItems": 17,
+      "finalTargetMatchesStableIdentity": true,
+      "interactionCodeChanged": false
+    },
+    {
+      "stableID": "com.surfshark.vpnclient.macos.direct::연결이 해제됨::0",
+      "expectedPID": 69560,
+      "actualPID": 69560,
+      "pidLookupResult": 0,
+      "kind": "menuTree",
+      "proxyRootItems": 15,
+      "finalTargetMatchesStableIdentity": true,
+      "interactionCodeChanged": false
+    }
+  ],
+  "finalBinaryActivation": {
+    "NoMenuPID": 95779,
+    "targetPID": 19223,
+    "actualPID": 19223,
+    "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+    "kind": "menuTree",
+    "proxyRootItems": 5,
+    "trustedOnStartup": true
+  },
+  "regression": {
+    "legacyCheckFiles": [
+      "AccessibilityStateChecks.swift",
+      "SpaceBehaviorChecks.swift",
+      "OutsideDismissalChecks.swift",
+      "ActiveItemToggleChecks.swift",
+      "LiveArtworkChecks.swift",
+      "ArtworkMappingChecks.swift",
+      "BarAppearanceChecks.swift",
+      "SettingsContentChecks.swift"
+    ],
+    "existingFilesModified": false,
+    "legacyResult": "8/8 PASS",
+    "newCompatibilityChecks": "PASS",
+    "output": [
+      "PASS: already granted, fresh explicit checks, no redundant publication or polling",
+      "PASS: one temporary timer, automatic false -> true, timer fully stops",
+      "PASS: revocation/regrant on explicit checks, immediate activation refresh",
+      "PASS: discovery permission gate, idempotent shutdown, no late timer reads",
+      "PASS: initially denied launch begins polling without needing a transition",
+      "PASS: 10 Space generations; stale visible/screen state rejected and first-click presentation accepted",
+      "PASS: one authoritative global mouse-down classification; outside is never promoted by proximity",
+      "PASS: same-item toggle-off, repeated toggles, direct switching and outside cleanup converge synchronously",
+      "PASS: four FPS options, default 10, persistence and legacy preferences preserved",
+      "PASS: identical frames do not publish; changed artwork publishes once",
+      "PASS: consumer-ID mapping, reorder isolation, owner match, no unused-source capture, no offscreen guessing",
+      "PASS: cached frame retained, capture/publication timestamps separated; same frame not republished",
+      "PASS: NoMenu bar appearance persistence, screen-relative geometry, and exact reset",
+      "PASS: wallpaper capture source stays aligned at both top and bottom screen edges",
+      "PASS: exactly five sections; real login adapter; existing preferences; honest updater result",
+      "PASS: every new preference/picker round trips; page restoration; animation disable",
+      "PASS: shortcut persistence, rejected conflict preserves previous shortcut, clear",
+      "PASS: recovery actions while denied are safe; no duplicate AX observers; targeted reset preserves permission markers/unrelated data",
+      "PASS: actual menu service sorting, ignored filtering, visibility classification preserved, stable order during interaction",
+      "PASS: full-width native environment, unrelated owners/layers/overlays/displays rejected",
+      "PASS: collapsed/expanded/collapsed overflow set preserved; visible third-party/system items excluded"
+    ]
+  },
+  "build": {
+    "command": "scripts/build-app.sh debug",
+    "selectedSDK": "26.5",
+    "deploymentTarget": "15.0",
+    "signingIdentity": "NoMenu Local Code Signing",
+    "certificateBasedRequirementVerified": true,
+    "configurationFilesChanged": false
+  },
+  "sourceAudit": {
+    "unchangedFunctions": [
+      "discoverCompositorSlots",
+      "makeScreenGeometries",
+      "convertToCGCoordinates",
+      "activeApplicationMenuRightEdges",
+      "isRealStatusItem"
+    ],
+    "legacyClassifierBodyUnchangedWhenNativeEvidenceIsEmpty": true,
+    "activationBlockUnchanged": true,
+    "onlyTrackedRuntimeFileModified": "Sources/NoMenu/Services/AccessibilityService.swift",
+    "availabilityChecksAdded": 1,
+    "runtimeFilesChanged": 2,
+    "runtimeLinesAdded": 172,
+    "runtimeLinesDeleted": 3
+  },
+  "finalDevelopmentWindowLogExamples": [
+    "[NoMenuCompatibility] candidateWindow=79690 ownerPID=19223 windowBounds={{436, 0}, {640, 210}} screenBounds={{0, 0}, {1512, 982}} legacyWidthCheck=false macOS27MenuBarValidation=false onScreen=true accepted=false",
+    "[NoMenuCompatibility] candidateWindow=79645 ownerPID=599 windowBounds={{1512, 103}, {1135, 30}} screenBounds={{1512, 103}, {1135, 789}} legacyWidthCheck=false macOS27MenuBarValidation=true onScreen=true accepted=true",
+    "[NoMenuCompatibility] candidateWindow=16094 ownerPID=19223 windowBounds={{436, 0}, {640, 210}} screenBounds={{0, 0}, {1512, 982}} legacyWidthCheck=false macOS27MenuBarValidation=false onScreen=false accepted=false",
+    "[NoMenuCompatibility] candidateWindow=79992 ownerPID=19223 windowBounds={{436, 0}, {640, 210}} screenBounds={{0, 0}, {1512, 982}} legacyWidthCheck=false macOS27MenuBarValidation=false onScreen=true accepted=false",
+    "[NoMenuCompatibility] candidateWindow=80006 ownerPID=19223 windowBounds={{436, 0}, {640, 210}} screenBounds={{0, 0}, {1512, 982}} legacyWidthCheck=false macOS27MenuBarValidation=false onScreen=true accepted=false"
+  ]
+}

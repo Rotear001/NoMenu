@@ -29,6 +29,11 @@ final class AccessibilityService: ObservableObject {
         let isOnScreen: Bool
     }
 
+    private struct NativeMenuBarEnvironment {
+        let displayID: CGDirectDisplayID
+        let overflowBoundary: CGRect?
+    }
+
     private struct MenuActionReference {
         let element: AXUIElement
         let sourceElement: AXUIElement
@@ -157,13 +162,21 @@ final class AccessibilityService: ObservableObject {
         logger.notice("starting menu bar discovery")
 
         let screenGeometries = makeScreenGeometries()
+        let compatibility = MenuBarCompatibility.current
         let menuRightEdges = activeApplicationMenuRightEdges(in: screenGeometries)
         let compositorSlots = discoverCompositorSlots(in: screenGeometries)
+        let nativeMenuBars = compatibility == .macOS27
+            ? discoverMacOS27MenuBars(in: screenGeometries) : []
         var candidates: [Candidate] = []
         var iconsByID: [UUID: NSImage] = [:]
         var observationTargets: [(pid_t, AXUIElement, [AXUIElement])] = []
         var occurrenceCounts: [String: Int] = [:]
+        var seenElements: [String: [(element: AXUIElement, identity: String)]] = [:]
+        var compatibilityLogBudget = 24
         var discoveryOrder = 0
+        #if DEBUG
+        logger.debug("[NoMenuCompatibility] osVersion=\(ProcessInfo.processInfo.operatingSystemVersionString, privacy: .public) compatibilityMode=\(compatibility.rawValue, privacy: .public)")
+        #endif
 
         for application in NSWorkspace.shared.runningApplications where !application.isTerminated {
             guard application.processIdentifier != ProcessInfo.processInfo.processIdentifier,
@@ -171,7 +184,10 @@ final class AccessibilityService: ObservableObject {
 
             let appElement = AXUIElementCreateApplication(application.processIdentifier)
             guard let extrasMenu = elementAttribute(kAXExtrasMenuBarAttribute, from: appElement) else { continue }
-            let children = elementArrayAttribute(kAXChildrenAttribute, from: extrasMenu)
+            let directChildren = elementArrayAttribute(kAXChildrenAttribute, from: extrasMenu)
+            let children = compatibility == .macOS27
+                ? macOS27StatusChildren(of: extrasMenu, directChildren: directChildren, screens: screenGeometries)
+                : directChildren
             guard !children.isEmpty else { continue }
             observationTargets.append((application.processIdentifier, extrasMenu, children))
 
@@ -187,9 +203,18 @@ final class AccessibilityService: ObservableObject {
                 let identifier = stringAttribute(kAXIdentifierAttribute, from: child)
                 let ownerKey = application.bundleIdentifier ?? "pid:\(application.processIdentifier)"
                 let identityBase = "\(ownerKey)::\(identifier ?? title)"
+                if compatibility == .macOS27,
+                   let duplicate = seenElements[identityBase]?.first(where: { CFEqual($0.element, child) }) {
+                    logCompatibilityDiscovery(child, identity: duplicate.identity, duplicate: true, budget: &compatibilityLogBudget)
+                    continue
+                }
                 let occurrence = occurrenceCounts[identityBase, default: 0]
                 occurrenceCounts[identityBase] = occurrence + 1
                 let identityKey = "\(identityBase)::\(occurrence)"
+                if compatibility == .macOS27 {
+                    seenElements[identityBase, default: []].append((child, identityKey))
+                    logCompatibilityDiscovery(child, identity: identityKey, duplicate: false, budget: &compatibilityLogBudget)
+                }
                 let itemID = cachedItemIDs[identityKey] ?? UUID()
                 cachedItemIDs[identityKey] = itemID
 
@@ -201,7 +226,8 @@ final class AccessibilityService: ObservableObject {
                     subrole: subrole,
                     screens: screenGeometries,
                     activeMenuRightEdges: menuRightEdges,
-                    compositorSlots: compositorSlots
+                    compositorSlots: compositorSlots,
+                    nativeMenuBars: nativeMenuBars
                 )
                 let pressSupported = supportsAction(kAXPressAction, on: child)
                 let hasMenu = findMenu(from: child) != nil
@@ -438,7 +464,8 @@ final class AccessibilityService: ObservableObject {
         subrole: String?,
         screens: [ScreenGeometry],
         activeMenuRightEdges: [CGDirectDisplayID: CGFloat],
-        compositorSlots: [CompositorSlot]
+        compositorSlots: [CompositorSlot],
+        nativeMenuBars: [NativeMenuBarEnvironment]
     ) -> (state: MenuBarVisibilityState, reason: String) {
         guard isRealStatusItem(role: role, subrole: subrole), let frame else {
             return (.unknown, "No reliable AX status-item frame")
@@ -462,6 +489,14 @@ final class AccessibilityService: ObservableObject {
         if screen.hasUnsafeTopArea,
            !screen.usableStatusRegions.contains(where: { coverage(of: frame, by: $0) >= 0.90 }) {
             return (.overflowed, "AX frame intersects the display's unsafe/notch area")
+        }
+
+        if let nativeBar = nativeMenuBars.first(where: { $0.displayID == screen.displayID }) {
+            if let boundary = nativeBar.overflowBoundary,
+               MenuBarCompatibility.belongsToNativeOverflow(frame: frame, boundary: boundary) {
+                return (.overflowed, "AX item belongs to the macOS 27 native overflow region")
+            }
+            return (.visible, "Usable AX geometry in a verified on-screen macOS 27 menu bar")
         }
 
         let matchingSlots = compositorSlots.filter { slot in
@@ -550,6 +585,60 @@ final class AccessibilityService: ObservableObject {
             let isOnScreen = (info[kCGWindowIsOnscreen as String] as? NSNumber)?.boolValue ?? false
             return CompositorSlot(bounds: bounds, isOnScreen: isOnScreen)
         }
+    }
+
+    private func discoverMacOS27MenuBars(in screens: [ScreenGeometry]) -> [NativeMenuBarEnvironment] {
+        guard let agent = NSWorkspace.shared.runningApplications.first(where: {
+            $0.bundleIdentifier == "com.apple.MenuBarAgent" &&
+            $0.bundleURL?.path == "/System/Library/CoreServices/MenuBarAgent.app"
+        }),
+        let extras = elementAttribute(kAXExtrasMenuBarAttribute, from: AXUIElementCreateApplication(agent.processIdentifier)),
+        stringAttribute(kAXRoleAttribute, from: extras) == kAXMenuBarRole,
+        let extrasFrame = rectAttribute(from: extras),
+        let windows = CGWindowListCopyWindowInfo([.optionAll, .excludeDesktopElements], kCGNullWindowID) as? [[String: Any]]
+        else { return [] }
+
+        let boundaries = elementArrayAttribute(kAXChildrenAttribute, from: extras).compactMap { child -> CGRect? in
+            guard stringAttribute(kAXRoleAttribute, from: child) == kAXButtonRole,
+                  boolAttribute(kAXEnabledAttribute, from: child) == true,
+                  actionNames(of: child).isEmpty,
+                  elementArrayAttribute(kAXChildrenAttribute, from: child).isEmpty,
+                  let frame = rectAttribute(from: child),
+                  MenuBarCompatibility.isOverflowBoundary(button: frame, extras: extrasFrame) else { return nil }
+            return frame
+        }
+        // Ambiguous structural controls cannot establish an overflow boundary.
+        let boundary = boundaries.count == 1 ? boundaries.first : nil
+        var result: [NativeMenuBarEnvironment] = []
+        var logBudget = 8
+        var loggedWindows = Set<String>()
+        for info in windows {
+            guard let rawBounds = info[kCGWindowBounds as String] as? [CFString: Any],
+                  let bounds = CGRect(dictionaryRepresentation: rawBounds as CFDictionary),
+                  bounds.width > 400,
+                  let layer = (info[kCGWindowLayer as String] as? NSNumber)?.intValue,
+                  (20...30).contains(layer),
+                  let ownerPID = (info[kCGWindowOwnerPID as String] as? NSNumber)?.int32Value,
+                  let screen = screens.first(where: { $0.menuBar.intersects(bounds) }) else { continue }
+            let nativeOwner = ownerPID == agent.processIdentifier ||
+                info[kCGWindowOwnerName as String] as? String == "Window Server"
+            let valid = MenuBarCompatibility.validatesFullWidthMenuBar(
+                window: bounds, layer: layer, nativeOwner: nativeOwner,
+                screen: screen.bounds, menuBar: screen.menuBar, extras: extrasFrame
+            )
+            let onScreen = (info[kCGWindowIsOnscreen as String] as? NSNumber)?.boolValue ?? false
+            #if DEBUG
+            let logKey = "\(ownerPID):\(layer):\(bounds):\(onScreen)"
+            if logBudget > 0, loggedWindows.insert(logKey).inserted {
+                logBudget -= 1
+                let windowID = (info[kCGWindowNumber as String] as? NSNumber)?.uint32Value ?? 0
+                logger.debug("[NoMenuCompatibility] candidateWindow=\(windowID) ownerPID=\(ownerPID) windowBounds=\(NSStringFromRect(bounds), privacy: .public) screenBounds=\(NSStringFromRect(screen.bounds), privacy: .public) legacyWidthCheck=false macOS27MenuBarValidation=\(valid) onScreen=\(onScreen) accepted=\(valid && onScreen)")
+            }
+            #endif
+            guard valid, onScreen, !result.contains(where: { $0.displayID == screen.displayID }) else { continue }
+            result.append(NativeMenuBarEnvironment(displayID: screen.displayID, overflowBoundary: boundary))
+        }
+        return result
     }
 
     private func coverage(of frame: CGRect, by region: CGRect) -> CGFloat {
@@ -952,6 +1041,45 @@ final class AccessibilityService: ObservableObject {
 
     private func isRealStatusItem(role: String?, subrole: String?) -> Bool {
         role == kAXMenuBarItemRole || subrole == "AXMenuExtra"
+    }
+
+    private func macOS27StatusChildren(
+        of extrasMenu: AXUIElement,
+        directChildren: [AXUIElement],
+        screens: [ScreenGeometry]
+    ) -> [AXUIElement] {
+        guard stringAttribute(kAXRoleAttribute, from: extrasMenu) == kAXMenuBarRole,
+              let extrasFrame = rectAttribute(from: extrasMenu) else { return directChildren }
+        // Observed: AXExtrasMenuBar -> AXGroup/AXHostingView -> AXMenuBarItem.
+        // Exactly one group level; never enter applications, windows or controls.
+        return directChildren.flatMap { child -> [AXUIElement] in
+            guard stringAttribute(kAXRoleAttribute, from: child) == kAXGroupRole,
+                  stringAttribute(kAXSubroleAttribute, from: child) == "AXHostingView",
+                  let groupFrame = rectAttribute(from: child),
+                  coverage(of: groupFrame, by: extrasFrame.insetBy(dx: -2, dy: -2)) >= 0.90,
+                  screens.contains(where: { $0.menuBar.intersects(groupFrame) }) else { return [child] }
+            return elementArrayAttribute(kAXChildrenAttribute, from: child).filter {
+                isRealStatusItem(
+                    role: stringAttribute(kAXRoleAttribute, from: $0),
+                    subrole: stringAttribute(kAXSubroleAttribute, from: $0)
+                )
+            }
+        }
+    }
+
+    private func logCompatibilityDiscovery(
+        _ element: AXUIElement, identity: String, duplicate: Bool, budget: inout Int
+    ) {
+        #if DEBUG
+        guard budget > 0 else { return }
+        budget -= 1
+        let parent = elementAttribute(kAXParentAttribute, from: element)
+        let parentRole = parent.flatMap { stringAttribute(kAXRoleAttribute, from: $0) } ?? "unknown"
+        let parentSubrole = parent.flatMap { stringAttribute(kAXSubroleAttribute, from: $0) } ?? "none"
+        let role = stringAttribute(kAXRoleAttribute, from: element) ?? "unknown"
+        let subrole = stringAttribute(kAXSubroleAttribute, from: element) ?? "none"
+        logger.debug("[NoMenuAXDiscovery] parentRole=\(parentRole, privacy: .public) parentSubrole=\(parentSubrole, privacy: .public) groupDepth=\(parentRole == kAXGroupRole ? 1 : 0) childRole=\(role, privacy: .public) childSubrole=\(subrole, privacy: .public) stableItemID=\(identity, privacy: .public) accepted=\(!duplicate) duplicate=\(duplicate)")
+        #endif
     }
 
     private func itemType(title: String, isAppleProvided: Bool) -> MenuBarItemType {

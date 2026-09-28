@@ -1,0 +1,223 @@
+{
+  "capturedDate": "2026-09-28",
+  "sourceCommit": "9e3fdc4",
+  "coordinateSpace": "global CoreGraphics points, top-left origin; AppKit fields labelled separately",
+  "environment": [
+    {
+      "axTrusted": true,
+      "kind": "environment",
+      "os": "Version 27.0 (Build 26A428)",
+      "screenRecording": true
+    },
+    {
+      "appKitFrame": "{{0, 0}, {1512, 982}}",
+      "auxiliaryRight": "{{848.5, 950}, {663.5, 32}}",
+      "cgBounds": "{{0, 0}, {1512, 982}}",
+      "displayID": 1,
+      "kind": "display",
+      "safeTop": 32,
+      "scale": 2,
+      "statusThickness": 22,
+      "visibleFrame": "{{0, 0}, {1512, 949}}"
+    },
+    {
+      "appKitFrame": "{{1512, 90}, {1135, 789}}",
+      "auxiliaryRight": "{{0, 0}, {0, 0}}",
+      "cgBounds": "{{1512, 103}, {1135, 789}}",
+      "displayID": 36,
+      "kind": "display",
+      "safeTop": 0,
+      "scale": 2,
+      "statusThickness": 22,
+      "visibleFrame": "{{1512, 90}, {1135, 789}}"
+    }
+  ],
+  "probeNote": "Unmodified AccessibilityService/MenuBarItem/MenuBarSymbol compiled into a temporary non-bundled observer. Source excludes its own bundle; this probe cannot exclude NoMenu via Bundle.main, so NoMenu rows are removed here. The original probe returned 9 items (including one NoMenu); these 8 rows match the normalized development-app count for this capture. The helper installs and removes observers in its own process only and never calls AXPress or requests permissions.",
+  "sourceItems": [
+    {
+      "stableID": "com.apple.campo::Spotlight::0",
+      "bundle": "com.apple.campo",
+      "pid": 2071,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{1279, 4.5}, {34, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    },
+    {
+      "stableID": "com.apple.TextInputMenuAgent::<dynamic caption redacted>::0",
+      "bundle": "com.apple.TextInputMenuAgent",
+      "pid": 2277,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{1155, 4.5}, {46, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    },
+    {
+      "stableID": "com.injisung0818.NoNoTcH::Sparkle Star::0",
+      "bundle": "com.injisung0818.NoNoTcH",
+      "pid": 19223,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{880, 4.5}, {34, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    },
+    {
+      "stableID": "com.kyome.RunCat::RunCat::0",
+      "bundle": "com.kyome.RunCat",
+      "pid": 19255,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{1101, 4.5}, {56, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    },
+    {
+      "stableID": "whbalzac.Dongtaizhuomian::Dynamic Wallpaper::0",
+      "bundle": "whbalzac.Dongtaizhuomian",
+      "pid": 26813,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{880, 4.5}, {34, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    },
+    {
+      "stableID": "com.surfshark.vpnclient.macos.direct::<dynamic caption redacted>::0",
+      "bundle": "com.surfshark.vpnclient.macos.direct",
+      "pid": 69560,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{882, 4.5}, {24, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    },
+    {
+      "stableID": "com.openai.codex::ChatGPT::0",
+      "bundle": "com.openai.codex",
+      "pid": 85557,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{882, 4.5}, {24, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    },
+    {
+      "stableID": "com.madrascheck.flow::flow::0",
+      "bundle": "com.madrascheck.flow",
+      "pid": 86348,
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{968, 4.5}, {36, 24}}",
+      "classification": "unknown",
+      "reason": "The menu bar is not currently exposed; deferring classification",
+      "axActions": [
+        "AXPress"
+      ]
+    }
+  ],
+  "systemMenuBarWindows": [
+    {
+      "frame": "{{1512, 103}, {1135, 30}}",
+      "id": 74178,
+      "kind": "menuBarWindow",
+      "layer": 24,
+      "onScreen": true,
+      "passesSlotWidth": false,
+      "pid": 599
+    },
+    {
+      "frame": "{{0, 0}, {1512, 33}}",
+      "id": 73473,
+      "kind": "menuBarWindow",
+      "layer": 24,
+      "onScreen": true,
+      "passesSlotWidth": false,
+      "pid": 599
+    }
+  ],
+  "nativeAXExamples": [
+    {
+      "path": "1049/AXExtrasMenuBar/2",
+      "role": "AXGroup",
+      "subrole": "AXHostingView",
+      "frame": "{{1208, 0}, {22, 33}}",
+      "identifier": "<absent>",
+      "actions": []
+    },
+    {
+      "path": "1049/AXExtrasMenuBar/2/0",
+      "role": "AXMenuBarItem",
+      "subrole": "AXMenuExtra",
+      "frame": "{{1208, 5.5}, {22, 22}}",
+      "identifier": "com.apple.menuextra.wifi",
+      "actions": [
+        "AXShowMenu",
+        "AXPress",
+        "Name:Remove from Menu Bar\nTarget:0x0\nSelector:(null)"
+      ]
+    },
+    {
+      "path": "1049/AXExtrasMenuBar/6",
+      "role": "AXButton",
+      "subrole": "<absent>",
+      "frame": "{{896.5, 1}, {17.5, 30}}",
+      "identifier": "<absent>",
+      "actions": []
+    }
+  ],
+  "appLogSamples": [
+    {
+      "timeLocal": "17:44:10.638",
+      "pid": 90729,
+      "detected": 9,
+      "visible": 0,
+      "overflowed": 0,
+      "unknown": 9
+    },
+    {
+      "timeLocal": "17:44:12.086",
+      "pid": 91812,
+      "detected": 9,
+      "visible": 0,
+      "overflowed": 0,
+      "unknown": 9
+    },
+    {
+      "timeLocal": "17:46:34.638",
+      "pid": 90729,
+      "detected": 8,
+      "visible": 0,
+      "overflowed": 0,
+      "unknown": 8
+    }
+  ],
+  "uiObservations": {
+    "developmentPanel": "Opened through native hosted NoMenu AX control; system dialog contains no item buttons; screenshot shows an empty capsule.",
+    "thirdPartyMenu": "NoNoTcH Sparkle Star AX control was clicked with CUA; Settings, Check for Updates, Restart NoNoTcH and Quit menu appeared; dismissed afterward. No command was chosen.",
+    "nativeExpansion": "Native Show Hidden Menu Bar Items control was read; no controlled expand/collapse cycle completed."
+  }
+}
